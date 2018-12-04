@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {MainView} from 'src/views/MainView';
+import {AboutView} from '../views/AboutView';
+import {MainView} from '../views/MainView';
 
 const AppRouter = () => {
   return (
     <Switch>
-      <Route path={'/'} component={MainView} />
+      <Route exact={true} path={'/'} component={MainView} />
+      <Route path={'/about'} component={AboutView} />
     </Switch>
   );
 };
