@@ -1,4 +1,4 @@
-import {createStore} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {enthusiasm} from './test/reducers';
 
 export interface StoreState {
@@ -6,7 +6,19 @@ export interface StoreState {
   enthusiasmLevel: number;
 }
 
-export const myStore = createStore(enthusiasm, {
-  enthusiasmLevel: 1,
-  languageName: 'TypeScript',
+export const initialState = {
+  enthusiasm: {
+    enthusiasmLevel: 1,
+    languageName: 'TypeScript',
+  },
+};
+
+export const rootReducer = combineReducers({
+  enthusiasm,
 });
+
+export const myStore = createStore(
+  rootReducer,
+  initialState,
+  applyMiddleware()
+);
