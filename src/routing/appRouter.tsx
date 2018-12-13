@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {AboutView} from '../views/AboutView';
-import {MainView} from '../views/MainView';
+import MainView from '../views/MainView';
 
 const AppRouter = () => {
   return (

@@ -1,6 +1,10 @@
 import {EnthusiasmAction} from './actions';
-import {StoreState} from '../index';
 import {DECREMENT_ENTHUSIASM, INCREMENT_ENTHUSIASM} from './consts';
+
+export interface StoreState {
+  languageName: string;
+  enthusiasmLevel: number;
+}
 
 const initalState = {
   enthusiasmLevel: 1,
@@ -11,8 +15,6 @@ export function enthusiasm(
   state: StoreState = initalState,
   action: EnthusiasmAction
 ): StoreState {
-  console.log(`Action: ${action.type}`);
-  console.log(state);
   switch (action.type) {
     case INCREMENT_ENTHUSIASM:
       return {...state, enthusiasmLevel: state.enthusiasmLevel + 1};
