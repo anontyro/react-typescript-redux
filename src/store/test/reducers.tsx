@@ -6,7 +6,7 @@ export interface StoreState {
   enthusiasmLevel: number;
 }
 
-export const enthusiasmInitalState = {
+export const enthusiasmInitalState: StoreState = {
   enthusiasmLevel: 1,
   languageName: 'TypeScript',
 };
