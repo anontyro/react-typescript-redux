@@ -5,6 +5,7 @@ import {IMessage} from '../store/chat/message/consts';
 import * as actions from '../store/chat/message/actions';
 import {connect} from 'react-redux';
 import ChatBoxComponent from './components/chat/chatBox/ChatBoxComponent';
+import ChatWindowComponent from './components/chat/chatWindow/ChatWindowComponent';
 
 export interface Props {
   messageList: IMessage[];
@@ -51,6 +52,7 @@ export class ChatView extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <h1>{username}'s Chat page</h1>
+        <ChatWindowComponent messageList={this.props.messageList} />
         <p>Message: {this.state.currentMessage}</p>
         <ChatBoxComponent
           messageText={this.state.currentMessage}
