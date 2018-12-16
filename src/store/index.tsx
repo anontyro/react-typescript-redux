@@ -1,15 +1,11 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import {enthusiasm} from './test/reducers';
-import {general} from './general/reducers';
+import {enthusiasm, enthusiasmInitalState} from './test/reducers';
+import {general, generalInitalState} from './general/reducers';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 export const initialState = {
-  enthusiasm: {
-    enthusiasmLevel: 1,
-    languageName: 'TypeScript',
-  },
-  general: {
-    username: 'init',
-  },
+  enthusiasm: enthusiasmInitalState,
+  general: generalInitalState,
 };
 
 export const rootReducer = combineReducers({
@@ -17,8 +13,12 @@ export const rootReducer = combineReducers({
   general,
 });
 
+const composeEnhancers = composeWithDevTools({
+  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+});
+
 export const myStore = createStore(
   rootReducer,
   initialState,
-  applyMiddleware()
+  composeEnhancers(applyMiddleware())
 );

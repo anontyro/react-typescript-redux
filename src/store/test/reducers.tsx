@@ -6,13 +6,13 @@ export interface StoreState {
   enthusiasmLevel: number;
 }
 
-const initalState = {
+export const enthusiasmInitalState = {
   enthusiasmLevel: 1,
   languageName: 'TypeScript',
 };
 
 export function enthusiasm(
-  state: StoreState = initalState,
+  state: StoreState = enthusiasmInitalState,
   action: EnthusiasmAction
 ): StoreState {
   switch (action.type) {

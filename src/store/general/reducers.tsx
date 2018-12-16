@@ -5,12 +5,12 @@ export interface GeneralState {
   username: string;
 }
 
-const initalState = {
+export const generalInitalState = {
   username: 'player',
 };
 
 export function general(
-  state: GeneralState = initalState,
+  state: GeneralState = generalInitalState,
   action: GeneralAction
 ): GeneralState {
   switch (action.type) {
