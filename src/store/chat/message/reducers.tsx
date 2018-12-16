@@ -1,12 +1,12 @@
 import {MessageAction} from './actions';
 import {IMessage, ADD_MESSAGE, RECEIVE_MESSAGE} from './consts';
 
-export interface StoreState {
+export interface MessageState {
   messageList: IMessage[];
   currentMessage: IMessage;
 }
 
-export const messageInitalState: StoreState = {
+export const messageInitalState: MessageState = {
   messageList: [],
   currentMessage: {
     author: '',
@@ -18,9 +18,9 @@ export const messageInitalState: StoreState = {
 let messageList = [];
 
 export function message(
-  state: StoreState = messageInitalState,
+  state: MessageState = messageInitalState,
   action: MessageAction
-): StoreState {
+): MessageState {
   switch (action.type) {
     case ADD_MESSAGE:
       messageList = [...state.messageList];

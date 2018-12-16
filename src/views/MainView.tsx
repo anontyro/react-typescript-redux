@@ -17,7 +17,6 @@ export interface State {
 export class MainView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    console.log(this.props);
     this.state = {username: this.props.username};
 
     this.onUserNameChange = this.onUserNameChange.bind(this);

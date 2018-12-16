@@ -14,26 +14,23 @@ export interface RecieveMessage {
 
 export type MessageAction = AddMessage | RecieveMessage;
 
-export function addMessage(author: string, message: string): AddMessage {
+export function addMessage(message: constants.IMessage): AddMessage {
   return {
     payload: {
-      author,
+      author: message.author,
       id: nextMessageId++,
-      message,
+      message: message.message,
     },
     type: constants.ADD_MESSAGE,
   };
 }
 
-export function recieveMessage(
-  author: string,
-  message: string
-): RecieveMessage {
+export function recieveMessage(message: constants.IMessage): RecieveMessage {
   return {
     payload: {
-      author,
+      author: message.author,
       id: nextMessageId++,
-      message,
+      message: message.message,
     },
     type: constants.RECEIVE_MESSAGE,
   };

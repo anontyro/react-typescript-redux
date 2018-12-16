@@ -1,8 +1,19 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {enthusiasm, enthusiasmInitalState} from './test/reducers';
-import {general, generalInitalState} from './general/reducers';
-import {messageInitalState, message} from './chat/message/reducers';
+import {enthusiasm, enthusiasmInitalState, StoreState} from './test/reducers';
+import {general, generalInitalState, GeneralState} from './general/reducers';
+import {
+  messageInitalState,
+  message,
+  MessageState,
+} from './chat/message/reducers';
+
+export interface MyAppState {
+  enthusiasm: StoreState;
+  general: GeneralState;
+  message: MessageState;
+}
+
 export const initialState = {
   enthusiasm: enthusiasmInitalState,
   general: generalInitalState,
