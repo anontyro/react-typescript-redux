@@ -7,30 +7,41 @@ import {connect} from 'react-redux';
 
 export interface Props {
   messageList: IMessage[];
+  username: string;
 }
 
 export interface State {
-  currentMessage: IMessage;
+  currentMessage: string;
 }
 
 export class ChatView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+    this.onMessageChange = this.onMessageChange.bind(this);
+  }
+
+  onMessageChange(event: any) {
+    event.preventDefault();
+    this.setState({
+      currentMessage: event.currentTarget.value,
+    });
   }
 
   public render() {
+    const {username} = this.props;
     console.log(this.props.messageList);
     return (
       <React.Fragment>
-        <h1>Chat page</h1>
+        <h1>{username}'s Chat page</h1>
       </React.Fragment>
     );
   }
 }
 
-const mapsStateToProps = ({message}: MyAppState) => ({
+const mapsStateToProps = ({message, general}: MyAppState) => ({
   messageList: message.messageList,
   currentMessage: message.currentMessage,
+  username: general.username,
 });
 
 const mapsDispatchToProps = (dispatch: Dispatch) => ({
