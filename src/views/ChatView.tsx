@@ -6,10 +6,13 @@ import * as actions from '../store/chat/message/actions';
 import {connect} from 'react-redux';
 import ChatBoxComponent from './components/chat/chatBox/ChatBoxComponent';
 import ChatWindowComponent from './components/chat/chatWindow/ChatWindowComponent';
+import {IUser} from 'src/store/chat/user/consts';
+import UserListComponent from './components/chat/userList/UserListComponent';
 
 export interface Props {
   messageList: IMessage[];
   username: string;
+  userList: IUser[];
   addMessage: (message: IMessage) => void;
 }
 
@@ -48,10 +51,11 @@ export class ChatView extends React.Component<Props, State> {
   }
 
   public render() {
-    const {username} = this.props;
+    const {username, userList} = this.props;
     return (
       <React.Fragment>
         <h1>{username}'s Chat page</h1>
+        <UserListComponent username={username} userList={userList} />
         <ChatWindowComponent messageList={this.props.messageList} />
         <p>Message: {this.state.currentMessage}</p>
         <ChatBoxComponent
@@ -64,10 +68,11 @@ export class ChatView extends React.Component<Props, State> {
   }
 }
 
-const mapsStateToProps = ({message, general}: MyAppState) => ({
+const mapsStateToProps = ({message, general, users}: MyAppState) => ({
   messageList: message.messageList,
   currentMessage: message.currentMessage,
   username: general.username,
+  userList: users.userList,
 });
 
 const mapsDispatchToProps = (dispatch: Dispatch) => ({
