@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Dispatch} from 'redux';
+import styled from 'styled-components';
 import {MyAppState} from '../store/index';
 import {IMessage} from '../store/chat/message/consts';
 import * as actions from '../store/chat/message/actions';
@@ -9,14 +10,29 @@ import ChatWindowComponent from './components/chat/chatWindow/ChatWindowComponen
 import {IUser} from 'src/store/chat/user/consts';
 import UserListComponent from './components/chat/userList/UserListComponent';
 
-export interface Props {
+const ChatContainer = styled.div`
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid whitesmoke;
+  border-radius: 5px;
+  box-shadow: 1px 1px 9px 0px wheat;
+`;
+
+const ChatTopContainer = styled.div`
+  display: flex;
+`;
+
+interface Props {
   messageList: IMessage[];
   username: string;
   userList: IUser[];
   addMessage: (message: IMessage) => void;
 }
 
-export interface State {
+interface State {
   currentMessage: string;
 }
 
@@ -55,14 +71,17 @@ export class ChatView extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <h1>{username}'s Chat page</h1>
-        <UserListComponent username={username} userList={userList} />
-        <ChatWindowComponent messageList={this.props.messageList} />
-        <p>Message: {this.state.currentMessage}</p>
-        <ChatBoxComponent
-          messageText={this.state.currentMessage}
-          onMessageSubmit={this.onMessageSubmit}
-          onMessageChange={this.onMessageChange}
-        />
+        <ChatContainer>
+          <ChatTopContainer>
+            <UserListComponent username={username} userList={userList} />
+            <ChatWindowComponent messageList={this.props.messageList} />
+          </ChatTopContainer>
+          <ChatBoxComponent
+            messageText={this.state.currentMessage}
+            onMessageSubmit={this.onMessageSubmit}
+            onMessageChange={this.onMessageChange}
+          />
+        </ChatContainer>
       </React.Fragment>
     );
   }

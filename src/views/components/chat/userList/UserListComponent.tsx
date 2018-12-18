@@ -2,7 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {IUser} from 'src/store/chat/user/consts';
 
-const UserListContainer = styled.div``;
+const UserListContainer = styled.div`
+  margin: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #cecdcd;
+`;
 
 interface UserItemProps {
   user: IUser;

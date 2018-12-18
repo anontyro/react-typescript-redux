@@ -3,9 +3,14 @@ import styled from 'styled-components';
 
 const ChatContainer = styled.div`
   width: 100%;
+  margin-top: 5px;
+  padding: 5px;
+  border-top: 1px solid #cecdcd;
 `;
 
-const ChatInput = styled.input``;
+const ChatInput = styled.input`
+  width: 75%;
+`;
 
 interface Props {
   onMessageChange?: (event: any) => void;
